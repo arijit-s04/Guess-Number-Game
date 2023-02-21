@@ -1,5 +1,7 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
-function PrimaryButton({ children }) {
+import PropTypes from 'prop-types';
+
+function PrimaryButton({ children, onPress }) {
   return (
     <View style={styles.buttonOuterContainer}>
       <Pressable
@@ -9,6 +11,7 @@ function PrimaryButton({ children }) {
             : styles.buttonInnerContainer
         }
         android_ripple={{ color: "#610633" }}
+        onPress={onPress}
       >
         <Text style={styles.buttonText}>{children}</Text>
       </Pressable>
@@ -36,5 +39,9 @@ const styles = StyleSheet.create({
     opacity: 0.75,
   },
 });
+
+PrimaryButton.propTypes = {
+  onPress: PropTypes.func
+}
 
 export default PrimaryButton;
